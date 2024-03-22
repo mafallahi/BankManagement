@@ -1,11 +1,14 @@
 #pragma once
-void showBankMenuUI();
+namespace bankUI {
+	void showBankMenuUI();
 
-void showAccountManagementUI();
-void showNewAccountUI();
-void showEditAccountUI();
-void showDeleteAccountUI();
+	void showAccountManagementUI();
+	void showNewAccountUI();
+	void showEditAccountUI();
+	void showDeleteAccountUI();
 
-void showWithdrawMenuUI();
+	void showWithdrawMenuUI();
 
-void showDepositMenuUI();
+	void showDepositMenuUI();
+
+}
