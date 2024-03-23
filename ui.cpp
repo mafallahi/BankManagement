@@ -40,14 +40,14 @@ namespace bankUI {
 	void showWithdrawMenuUI() {
 		std::cout << "**************** WITHDRAW ****************\n";
 		std::cout << "\t1.Withdraw\n";
-		std::cout << "\t5.Back\n";
+		std::cout << "\t2.Back\n";
 	}
 
 	/* SHOW DEPOSIT MENU UI */
 	void showDepositMenuUI() {
 		std::cout << "**************** DEPOSIT ****************\n";
 		std::cout << "\t1.Deposit\n";
-		std::cout << "\t5.Back\n";
+		std::cout << "\t2.Back\n";
 	}
 
 }
