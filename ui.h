@@ -4,6 +4,8 @@ namespace bankUI {
 
 	void showAccountManagementUI();
 	void showNewAccountUI();
+	void showNewAccountInformationUI();
+	void showNewAccountSuccessInformationUI();
 	void showEditAccountUI();
 	void showDeleteAccountUI();
 

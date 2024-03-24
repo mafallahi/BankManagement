@@ -24,12 +24,18 @@
     <ClCompile Include="clearScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="account.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ui.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="clearScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="account.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

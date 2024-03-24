@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ui.h"
+
 namespace bankUI {
 	/* MAIN MENU UI */
 	void showBankMenuUI() {
@@ -22,6 +23,12 @@ namespace bankUI {
 		std::cout << "**************** NEW ACCOUNT ****************\n";
 		std::cout << "\t1.Insert Account Information\n";
 		std::cout << "\t2.Back \n";
+	}
+	void showNewAccountInformationUI() {
+		std::cout << "**************** NEW ACCOUNT Information ****************\n";
+	}
+	void showNewAccountSuccessInformationUI() {
+		std::cout << "**************** Your Account has been successfully created! ****************\n";
 	}
 	void showEditAccountUI() {
 		std::cout << "**************** Edit ACCOUNT ****************\n";
