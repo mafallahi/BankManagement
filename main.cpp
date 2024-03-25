@@ -22,6 +22,7 @@ int main() {
 	int accountDepositChoice{ 0 };
 	int newAccountChoice{ 0 };
 	int newSuccessAccountChoice{ 0 };
+	double accountWithdrawBalance{ 0 };
 
 	Account newAccount;
 	PersonData newPerson;
@@ -82,7 +83,7 @@ int main() {
 						SuccessAccountMenu:
 						ClearConsoleScreen::Clear();
 						bankUI::showNewAccountSuccessInformationUI();
-						std::cout << "\tWelcome " << newAccount.getName() << " to our bank.\n";
+						std::cout << "\n\tWelcome " << newAccount.getName() << " to our bank.\n";
 						std::cout << "\tYou are now our client and this is your Balance: $" << newAccount.getBalance() <<"\n";
 						std::cout << "\tif you wanna back to main menu enter number 1: ";
 						std::cin >> newSuccessAccountChoice;
@@ -122,10 +123,24 @@ int main() {
 			switch (accountWithdrawChoice)
 			{
 			case 1:
-				//do somthing about witdraw
-				goto WithdrawMenu;
+				WithdrawSecondMenu:
+				ClearConsoleScreen::Clear();
+				bankUI::showWithdrawScondMenuUI();
+				std::cout << "\n\tHey " << newAccount.getName() << ", This is your Balance:$ " << newAccount.getBalance() <<"\n";
+				std::cout << "\nHow much money you want withdraw:$ ";
+				std::cin >> accountWithdrawBalance;
+				if (accountWithdrawBalance <= 0) {
+					std::cout << "You Can't use negetive numbers.\n ";
+					goto WithdrawSecondMenu;
+				}
+				else {
+					newAccount.withdrawBalance(accountWithdrawBalance);
+					goto WithdrawSecondMenu;
+				}
+				break;
 			case 2:
 				goto MainMenu;
+				break;
 			default:
 				std::cin.clear();
 				std::cin.ignore(std::numeric_limits<int>::max(), '\n');

@@ -49,6 +49,9 @@ namespace bankUI {
 		std::cout << "\t1.Withdraw\n";
 		std::cout << "\t2.Back\n";
 	}
+	void showWithdrawScondMenuUI() {
+		std::cout << "**************** How much money do you need  ****************\n";
+	}
 
 	/* SHOW DEPOSIT MENU UI */
 	void showDepositMenuUI() {

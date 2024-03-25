@@ -31,6 +31,8 @@ public:
 	int getID();
 	void setBalance(const double& balance);
 	double getBalance();
+
+	void withdrawBalance(const double& balance);
 	~Account();
 
 private:

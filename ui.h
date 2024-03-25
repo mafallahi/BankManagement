@@ -10,7 +10,7 @@ namespace bankUI {
 	void showDeleteAccountUI();
 
 	void showWithdrawMenuUI();
-
+	void showWithdrawScondMenuUI();
 	void showDepositMenuUI();
 
 }

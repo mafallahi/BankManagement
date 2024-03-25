@@ -61,5 +61,7 @@
 	double Account::getBalance() {
 		return balance;
 	}
-
+	void Account::withdrawBalance(const double& balance) {
+		this->balance -= balance;
+	}
 
