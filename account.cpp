@@ -64,4 +64,7 @@
 	void Account::withdrawBalance(const double& balance) {
 		this->balance -= balance;
 	}
+	void Account::depositBalance(const double& balance) {
+		this->balance += balance;
+	}
 

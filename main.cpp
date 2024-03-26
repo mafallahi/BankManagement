@@ -23,7 +23,7 @@ int main() {
 	int newAccountChoice{ 0 };
 	int newSuccessAccountChoice{ 0 };
 	double accountWithdrawBalance{ 0 };
-
+	double accountDepositBalance{ 0 };
 	Account newAccount;
 	PersonData newPerson;
 	do
@@ -135,7 +135,7 @@ int main() {
 				}
 				else {
 					newAccount.withdrawBalance(accountWithdrawBalance);
-					goto WithdrawSecondMenu;
+					goto WithdrawMenu;
 				}
 				break;
 			case 2:
@@ -154,12 +154,25 @@ int main() {
 			ClearConsoleScreen::Clear();
 			bankUI::showDepositMenuUI();
 			std::cout << "Please Choice your option : ";
-			std::cin >> accountDepositChoice;
+12			std::cin >> accountDepositChoice;
 			switch (accountDepositChoice)
 			{
 			case 1:
-				//do somthing about deposit
-				goto DepositMenu;
+				DepositSecondMenu:
+				ClearConsoleScreen::Clear();
+				bankUI::showDepositScondMenuUI();
+				std::cout << "\n\tHey " << newAccount.getName() << ", This is your Balance:$ " << newAccount.getBalance() << "\n";
+				std::cout << "\nHow much money you want deposit:$ ";
+				std::cin >> accountDepositBalance;
+				if (accountDepositBalance <= 0) {
+					std::cout << "You Can't use negetive numbers.\n ";
+					goto DepositSecondMenu;
+				}
+				else {
+					newAccount.depositBalance(accountDepositBalance);
+					goto DepositMenu;
+				}
+				break;
 			case 2:
 				goto MainMenu;
 			default:

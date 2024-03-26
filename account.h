@@ -33,6 +33,7 @@ public:
 	double getBalance();
 
 	void withdrawBalance(const double& balance);
+	void depositBalance(const double& balance);
 	~Account();
 
 private:

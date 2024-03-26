@@ -59,5 +59,7 @@ namespace bankUI {
 		std::cout << "\t1.Deposit\n";
 		std::cout << "\t2.Back\n";
 	}
-
+	void showDepositScondMenuUI() {
+		std::cout << "**************** How much money you want deposit  ****************\n";
+	}
 }

@@ -12,5 +12,6 @@ namespace bankUI {
 	void showWithdrawMenuUI();
 	void showWithdrawScondMenuUI();
 	void showDepositMenuUI();
+	void showDepositScondMenuUI();
 
 }
