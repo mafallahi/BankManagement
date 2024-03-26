@@ -154,7 +154,7 @@ int main() {
 			ClearConsoleScreen::Clear();
 			bankUI::showDepositMenuUI();
 			std::cout << "Please Choice your option : ";
-12			std::cin >> accountDepositChoice;
+			std::cin >> accountDepositChoice;
 			switch (accountDepositChoice)
 			{
 			case 1:
