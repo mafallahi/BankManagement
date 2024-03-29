@@ -8,4 +8,5 @@
 - [ ] something wrong about deposit and withdraw 
 - [X] show to the client balance. 
 - [X] bank manager can add, edit or delete a client (Only can Add One Person).
-- [X] i dont know
+- [ ] add register and login system
+- [ ] make dashboard for client.
