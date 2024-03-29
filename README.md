@@ -1,12 +1,15 @@
+![BankManagement](https://socialify.git.ci/mafallahi/BankManagement/image?description=1&font=Raleway&language=1&name=1&owner=1&pattern=Circuit%20Board&theme=Light)
 # Bank Management
-## simple bank management system 
-### TODO LIST 
+### simple bank management system 
 
-- [X] make simple account system for a person(like information and etc..)
-- [ ] account session just take one person information we need more than one person.
-- [X] (50% complete) make withdraw and deposit system for bank manager(50% complete). 
-- [ ] something wrong about deposit and withdraw 
-- [X] show to the client balance. 
-- [X] bank manager can add, edit or delete a client (Only can Add One Person).
-- [ ] add register and login system
-- [ ] make dashboard for client.
+## Features
+* Add Account (just one)
+* Withdraw
+* Deposit
+  
+#### TODO LIST 
+- [ ] Edit and Delete Account
+- [ ] Fix some issues (balance value can be negative numbers with deposit and withdraw functions)
+- [ ] Store multiple person 
+
+
