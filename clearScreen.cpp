@@ -1,16 +1,14 @@
-#include <iostream>
 #include "clearScreen.h"
+#include <cstdlib>
 
-namespace ClearConsoleScreen {
-	void Clear()
-	{
-#if defined _WIN32
-		system("cls");
-#elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
-		system("clear");
-#elif defined (__APPLE__)
-		system("clear");
+namespace ClearConsoleScreen
+{
+    void Clear()
+    {
+#ifdef _WIN32
+        system("cls");
+#else
+        system("clear");
 #endif
-
-	}
+    }
 }

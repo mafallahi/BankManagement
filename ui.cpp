@@ -1,65 +1,56 @@
-#include <iostream>
 #include "ui.h"
+#include <iostream>
 
-namespace bankUI {
-	/* MAIN MENU UI */
-	void showBankMenuUI() {
-		std::cout << "**************** BANK MANAGEMENT ****************\n";
-		std::cout << "\t1.Add Account\n";
-		std::cout << "\t2.Withdraw\n";
-		std::cout << "\t3.Deposit\n";
-		std::cout << "\t4.Exit\n";
-	}
+namespace bankUI
+{
+    void showMainMenuUI()
+    {
+        std::cout << "==============================\n";
+        std::cout << "      Bank Management\n";
+        std::cout << "==============================\n";
+        std::cout << "1. Create Account\n";
+        std::cout << "2. Show Account\n";
+        std::cout << "3. Deposit\n";
+        std::cout << "4. Withdraw\n";
+        std::cout << "5. Edit Account\n";
+        std::cout << "6. Delete Account\n";
+        std::cout << "7. Exit\n";
+        std::cout << "Choose: ";
+    }
 
-	/* SHOW ADD ACCOUNT MENU LIST UI*/
-	void showAccountManagementUI() {
-		std::cout << "**************** ACCOUNT Management ****************\n";
-		std::cout << "\t1.New Account\n";
-		std::cout << "\t2.Edit Account\n";
-		std::cout << "\t3.Delete Account\n";
-		std::cout << "\t4.Back \n";
-	}
-	void showNewAccountUI() {
-		std::cout << "**************** NEW ACCOUNT ****************\n";
-		std::cout << "\t1.Insert Account Information\n";
-		std::cout << "\t2.Back \n";
-	}
-	void showNewAccountInformationUI() {
-		std::cout << "**************** NEW ACCOUNT Information ****************\n";
-	}
-	void showNewAccountSuccessInformationUI() {
-		std::cout << "**************** Your Account has been successfully created! ****************\n";
-	}
-	void showEditAccountUI() {
-		std::cout << "**************** Edit ACCOUNT ****************\n";
-		std::cout << "\t1.Edit Account Information\n";
-		std::cout << "\t2.Back \n";
-	}
-	void showDeleteAccountUI() {
-		std::cout << "**************** Delete ACCOUNT ****************\n";
-		std::cout << "\t1.Delete a Account \n";
-		std::cout << "\t2.Back \n";
-	}
+    void showCreateAccountUI()
+    {
+        std::cout << "\n--- Create Account ---\n";
+    }
 
-	/* TODO: Show ACCOUNTS LIST UI */
+    void showShowAccountUI(const Account& account)
+    {
+        std::cout << "\n--- Account Information ---\n";
+        std::cout << "ID: " << account.getId() << '\n';
+        std::cout << "Name: " << account.getName() << '\n';
+        std::cout << "Family: " << account.getFamily() << '\n';
+        std::cout << "Address: " << account.getAddress() << '\n';
+        std::cout << "Phone: " << account.getPhone() << '\n';
+        std::cout << "Balance: " << account.getBalance() << '\n';
+    }
 
-	/* SHOW WITHDRAW MENU UI */
-	void showWithdrawMenuUI() {
-		std::cout << "**************** WITHDRAW ****************\n";
-		std::cout << "\t1.Withdraw\n";
-		std::cout << "\t2.Back\n";
-	}
-	void showWithdrawScondMenuUI() {
-		std::cout << "**************** How much money do you need  ****************\n";
-	}
+    void showDepositUI()
+    {
+        std::cout << "\n--- Deposit ---\n";
+    }
 
-	/* SHOW DEPOSIT MENU UI */
-	void showDepositMenuUI() {
-		std::cout << "**************** DEPOSIT ****************\n";
-		std::cout << "\t1.Deposit\n";
-		std::cout << "\t2.Back\n";
-	}
-	void showDepositScondMenuUI() {
-		std::cout << "**************** How much money you want deposit  ****************\n";
-	}
+    void showWithdrawUI()
+    {
+        std::cout << "\n--- Withdraw ---\n";
+    }
+
+    void showEditAccountUI()
+    {
+        std::cout << "\n--- Edit Account ---\n";
+    }
+
+    void showDeleteAccountUI()
+    {
+        std::cout << "\n--- Delete Account ---\n";
+    }
 }

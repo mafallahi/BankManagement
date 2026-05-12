@@ -1,5 +1,6 @@
 #pragma once
-namespace ClearConsoleScreen {
-	void Clear();
-}
 
+namespace ClearConsoleScreen
+{
+    void Clear();
+}

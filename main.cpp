@@ -1,198 +1,190 @@
 #include <iostream>
-#include <string>
 #include <limits>
+#include "account.h"
 #include "ui.h"
 #include "clearScreen.h"
-#include "account.h"
 
-struct PersonData
+bool readInt(int& value)
 {
-	std::string name{};
-	std::string family{};
-	std::string address{};
-	std::string phone{};
-	int id{0};
-	double balance{0};
+    if (!(std::cin >> value))
+    {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        return false;
+    }
+    return true;
+}
 
-};
-int main() {
-	int mainChoice{ 0 };
-	int accountChoice{ 0 };
-	int accountWithdrawChoice{ 0 };
-	int accountDepositChoice{ 0 };
-	int newAccountChoice{ 0 };
-	int newSuccessAccountChoice{ 0 };
-	double accountWithdrawBalance{ 0 };
-	double accountDepositBalance{ 0 };
-	Account newAccount;
-	PersonData newPerson;
-	do
-	{
-		MainMenu:
-		ClearConsoleScreen::Clear();
-		bankUI::showBankMenuUI();
-		std::cout << "Please Choice your option : ";
-		std::cin >> mainChoice;
+bool readDouble(double& value)
+{
+    if (!(std::cin >> value))
+    {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        return false;
+    }
+    return true;
+}
 
-		switch (mainChoice)
-		{
-		case 1:
-			AccountMenu:
-			ClearConsoleScreen::Clear();
-			bankUI::showAccountManagementUI();
-			std::cout << "Please Choice your option : ";
-			std::cin >> accountChoice;
-			switch (accountChoice)
-			{
+int main()
+{
+    Account account;
+    bool hasAccount = false;
+    bool running = true;
 
-				case 1:
-					ClearConsoleScreen::Clear();
-					bankUI::showNewAccountUI();
-					std::cout << "Please Choice your option : ";
-					std::cin >> newAccountChoice;
-					switch (newAccountChoice)
-					{
-					case 1:
-						ClearConsoleScreen::Clear();
-						bankUI::showNewAccountInformationUI();
-						std::cout << "\tPlease Enter Your Name: ";
-						std::getline(std::cin >> std::ws, newPerson.name);
+    while (running)
+    {
+        ClearConsoleScreen::Clear();
+        bankUI::showMainMenuUI();
 
-						newAccount.setName(newPerson.name);
+        int choice;
+        if (!readInt(choice))
+        {
+            std::cout << "Invalid input. Press Enter...\n";
+            std::cin.get();
+            std::cin.get();
+            continue;
+        }
 
-						std::cout << "\tPlease Enter Your Family: ";
-						std::getline(std::cin >> std::ws, newPerson.family);
-						newAccount.setFamily(newPerson.family);
+        switch (choice)
+        {
+        case 1:
+        {
+            ClearConsoleScreen::Clear();
+            bankUI::showCreateAccountUI();
 
-						std::cout << "\tPlease Enter Your Address: ";
-						std::getline(std::cin >> std::ws, newPerson.address);
-						newAccount.setAddress(newPerson.address);
+            std::string name, family, address, phone;
+            int id;
+            double balance;
 
-						std::cout << "\tPlease Enter Your Phone: ";
-						std::getline(std::cin >> std::ws, newPerson.phone);
-						newAccount.setPhone(newPerson.phone);
+            std::cout << "Name: ";
+            std::cin >> std::ws;
+            std::getline(std::cin, name);
 
-						std::cout << "\tPlease Enter Your ID: ";
-						std::cin >> newPerson.id;
-						newAccount.setID(newPerson.id);
+            std::cout << "Family: ";
+            std::getline(std::cin, family);
 
-						std::cout << "\tSet Your Balance: ";
-						std::cin >> newPerson.balance;
-						newAccount.setBalance(newPerson.balance);
+            std::cout << "Address: ";
+            std::getline(std::cin, address);
 
-						SuccessAccountMenu:
-						ClearConsoleScreen::Clear();
-						bankUI::showNewAccountSuccessInformationUI();
-						std::cout << "\n\tWelcome " << newAccount.getName() << " to our bank.\n";
-						std::cout << "\tYou are now our client and this is your Balance: $" << newAccount.getBalance() <<"\n";
-						std::cout << "\tif you wanna back to main menu enter number 1: ";
-						std::cin >> newSuccessAccountChoice;
-						if (newSuccessAccountChoice == 1) {
-							goto MainMenu;
-						}
-						else {
-							std::cin.clear();
-							std::cin.ignore(std::numeric_limits<int>::max(), '\n');
-							goto SuccessAccountMenu;
-						}
-						
-					}
-					break;
-				case 2:
-					ClearConsoleScreen::Clear();
-					bankUI::showEditAccountUI();
-					break;
-				case 3:
-					ClearConsoleScreen::Clear();
-					bankUI::showDeleteAccountUI();
-					break;
-				case 4:
-					goto MainMenu;
-					
-				default:
-					std::cout << "Error, Your choice not in Menu Options!\nPlease Choice right option.";
-					goto AccountMenu;
-			}
-			break;
-		case 2:
-			WithdrawMenu:
-			ClearConsoleScreen::Clear();
-			bankUI::showWithdrawMenuUI();
-			std::cout << "Please Choice your option : ";
-			std::cin >> accountWithdrawChoice;
-			switch (accountWithdrawChoice)
-			{
-			case 1:
-				WithdrawSecondMenu:
-				ClearConsoleScreen::Clear();
-				bankUI::showWithdrawScondMenuUI();
-				std::cout << "\n\tHey " << newAccount.getName() << ", This is your Balance:$ " << newAccount.getBalance() <<"\n";
-				std::cout << "\nHow much money you want withdraw:$ ";
-				std::cin >> accountWithdrawBalance;
-				if (accountWithdrawBalance <= 0) {
-					std::cout << "You Can't use negetive numbers.\n ";
-					goto WithdrawSecondMenu;
-				}
-				else {
-					newAccount.withdrawBalance(accountWithdrawBalance);
-					goto WithdrawMenu;
-				}
-				break;
-			case 2:
-				goto MainMenu;
-				break;
-			default:
-				std::cin.clear();
-				std::cin.ignore(std::numeric_limits<int>::max(), '\n');
-				std::cout << "Error, Your choice not in Menu Options!\nPlease Choice right option.";
-				goto WithdrawMenu;
-				break;
-			}
-			break;	
-		case 3:
-			DepositMenu:
-			ClearConsoleScreen::Clear();
-			bankUI::showDepositMenuUI();
-			std::cout << "Please Choice your option : ";
-			std::cin >> accountDepositChoice;
-			switch (accountDepositChoice)
-			{
-			case 1:
-				DepositSecondMenu:
-				ClearConsoleScreen::Clear();
-				bankUI::showDepositScondMenuUI();
-				std::cout << "\n\tHey " << newAccount.getName() << ", This is your Balance:$ " << newAccount.getBalance() << "\n";
-				std::cout << "\nHow much money you want deposit:$ ";
-				std::cin >> accountDepositBalance;
-				if (accountDepositBalance <= 0) {
-					std::cout << "You Can't use negetive numbers.\n ";
-					goto DepositSecondMenu;
-				}
-				else {
-					newAccount.depositBalance(accountDepositBalance);
-					goto DepositMenu;
-				}
-				break;
-			case 2:
-				goto MainMenu;
-			default:
-				std::cin.clear();
-				std::cin.ignore(std::numeric_limits<int>::max(), '\n');
-				std::cout << "Error, Your choice not in Menu Options!\nPlease Choice right option.";
-				goto DepositMenu;
-				break;
-			}
-			break;
-		case 4:
-			std::exit(1);
-		default:
+            std::cout << "Phone: ";
+            std::getline(std::cin, phone);
 
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<int>::max(), '\n');
-			std::cout << "Error, Your choice not in Menu Options!\nPlease Choice right option.";
-			goto MainMenu;
-		}
+            std::cout << "ID: ";
+            if (!readInt(id))
+            {
+                std::cout << "Invalid ID.\n";
+                break;
+            }
 
-	} while (!mainChoice);
-	return 0;
+            std::cout << "Initial balance: ";
+            if (!readDouble(balance))
+            {
+                std::cout << "Invalid balance.\n";
+                break;
+            }
+
+            account = Account(name, family, address, phone, id, balance);
+            hasAccount = true;
+
+            std::cout << "Account created successfully.\n";
+            break;
+        }
+
+        case 2:
+        {
+            ClearConsoleScreen::Clear();
+            if (!hasAccount)
+            {
+                std::cout << "No account found.\n";
+                break;
+            }
+
+            bankUI::showShowAccountUI(account);
+            break;
+        }
+
+        case 3:
+        {
+            ClearConsoleScreen::Clear();
+            if (!hasAccount)
+            {
+                std::cout << "No account found.\n";
+                break;
+            }
+
+            bankUI::showDepositUI();
+
+            double amount;
+            std::cout << "Amount: ";
+            if (!readDouble(amount))
+            {
+                std::cout << "Invalid amount.\n";
+                break;
+            }
+
+            if (account.deposit(amount))
+                std::cout << "Deposit successful.\n";
+            else
+                std::cout << "Deposit failed.\n";
+
+            break;
+        }
+
+        case 4:
+        {
+            ClearConsoleScreen::Clear();
+            if (!hasAccount)
+            {
+                std::cout << "No account found.\n";
+                break;
+            }
+
+            bankUI::showWithdrawUI();
+
+            double amount;
+            std::cout << "Amount: ";
+            if (!readDouble(amount))
+            {
+                std::cout << "Invalid amount.\n";
+                break;
+            }
+
+            if (account.withdraw(amount))
+                std::cout << "Withdraw successful.\n";
+            else
+                std::cout << "Withdraw failed. Check balance or amount.\n";
+
+            break;
+        }
+
+        case 5:
+            ClearConsoleScreen::Clear();
+            bankUI::showEditAccountUI();
+            std::cout << "Edit feature not implemented yet.\n";
+            break;
+
+        case 6:
+            ClearConsoleScreen::Clear();
+            bankUI::showDeleteAccountUI();
+            account = Account();
+            hasAccount = false;
+            std::cout << "Account deleted.\n";
+            break;
+
+        case 7:
+            running = false;
+            break;
+
+        default:
+            std::cout << "Invalid choice.\n";
+            break;
+        }
+
+        std::cout << "\nPress Enter to continue...";
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin.get();
+    }
+
+    return 0;
 }

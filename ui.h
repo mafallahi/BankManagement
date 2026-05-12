@@ -1,17 +1,13 @@
 #pragma once
-namespace bankUI {
-	void showBankMenuUI();
+#include "account.h"
 
-	void showAccountManagementUI();
-	void showNewAccountUI();
-	void showNewAccountInformationUI();
-	void showNewAccountSuccessInformationUI();
-	void showEditAccountUI();
-	void showDeleteAccountUI();
-
-	void showWithdrawMenuUI();
-	void showWithdrawScondMenuUI();
-	void showDepositMenuUI();
-	void showDepositScondMenuUI();
-
+namespace bankUI
+{
+    void showMainMenuUI();
+    void showCreateAccountUI();
+    void showShowAccountUI(const Account& account);
+    void showDepositUI();
+    void showWithdrawUI();
+    void showEditAccountUI();
+    void showDeleteAccountUI();
 }
